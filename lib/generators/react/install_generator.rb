@@ -17,7 +17,7 @@ module React
       end
 
       def inject_react
-        require_react = "//= require react\n"
+        require_react = "//= require react-lite\n"
 
         if manifest.exist?
           manifest_contents = File.read(manifest)
@@ -35,11 +35,11 @@ module React
       end
 
       def inject_components
-        inject_into_file manifest, "//= require components\n", {after: "//= require react\n"}
+        inject_into_file manifest, "//= require components\n", {after: "//= require react-lite\n"}
       end
 
       def inject_react_ujs
-        inject_into_file manifest, "//= require react_ujs\n", {after: "//= require react\n"}
+        inject_into_file manifest, "//= require react_ujs\n", {after: "//= require react-lite\n"}
       end
 
       def create_components

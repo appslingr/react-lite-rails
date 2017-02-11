@@ -1,5 +1,5 @@
-var React = require("react");
-var ReactDOM = require("react-dom");
+var React = require("react-lite");
+var ReactDOM = require("react-lite");
 
 
 React.addons = require("./addons-object.js");

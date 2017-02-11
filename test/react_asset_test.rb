@@ -11,13 +11,13 @@ when_sprockets_available do
     end
 
     test 'asset pipeline should deliver drop-in react file replacement' do
-      app_react_file_path = File.expand_path("../dummy/vendor/assets/javascripts/react.js",  __FILE__)
+      app_react_file_path = File.expand_path("../dummy/vendor/assets/javascripts/react-lite.js",  __FILE__)
       react_file_token = "'test_confirmation_token_react_content_non_production';\n"
       File.write(app_react_file_path, react_file_token)
-      manually_expire_asset("react.js")
-      react_asset = Rails.application.assets['react.js']
+      manually_expire_asset("react-lite.js")
+      react_asset = Rails.application.assets['react-lite.js']
 
-      get '/assets/react.js'
+      get '/assets/react-lite.js'
 
       File.unlink(app_react_file_path)
 
@@ -44,11 +44,11 @@ when_sprockets_available do
           # Sprockets 4+
           asset.filename
         end
-      assert path.end_with?('development-with-addons/react.js')
+      assert path.end_with?('development-with-addons/react-lite.js')
     end
 
     test "the production build is optimized for production" do
-      production_path = File.expand_path("../../lib/assets/react-source/production/react.js", __FILE__)
+      production_path = File.expand_path("../../lib/assets/react-source/production/react-lite.js", __FILE__)
       production_js = File.read(production_path)
       env_checks = production_js.scan("NODE_ENV")
       assert_equal(0, env_checks.length, "Dead code is removed for production")

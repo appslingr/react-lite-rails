@@ -4,7 +4,7 @@ require 'generators/react/component_generator'
 class Es6ComponentGeneratorTest < Rails::Generators::TestCase
   destination File.join(Rails.root, 'tmp', 'component_generator_test_output')
   setup :prepare_destination
-  tests React::Generators::ComponentGenerator
+  tests ReactLite::Generators::ComponentGenerator
 
   def filename
     'app/assets/javascripts/components/generated_component.es6.jsx'
@@ -31,7 +31,7 @@ class Es6ComponentGeneratorTest < Rails::Generators::TestCase
     expected_shape_div = /React\.createElement\(\s*"div",\s*null,\s*\"Address:\s*\",\s*this\.props\.address\s*\)/x
 
     run_generator %w(GeneratedComponent name:string address:shape --es6)
-    jsx = React::JSX.transform(File.read(File.join(destination_root, filename)))
+    jsx = ReactLite::JSX.transform(File.read(File.join(destination_root, filename)))
 
     assert_match(Regexp.new(expected_name_div), jsx)
     assert_match(Regexp.new(expected_shape_div), jsx)

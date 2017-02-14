@@ -1,4 +1,4 @@
-module React
+module ReactLite
   module Rails
     # This class accepts some options for which build you want, then exposes where you can find
     # them. In general, these paths should be added to the sprockets environment.

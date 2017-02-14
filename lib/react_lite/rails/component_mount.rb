@@ -1,4 +1,4 @@
-module React
+module ReactLite
   module Rails
     # This is the default view helper implementation.
     # It just inserts HTML into the DOM (see {#react_component}).
@@ -30,7 +30,7 @@ module React
 
         prerender_options = options[:prerender]
         if prerender_options
-          block = Proc.new{ concat React::ServerRendering.render(name, props, prerender_options) }
+          block = Proc.new{ concat ReactLite::ServerRendering.render(name, props, prerender_options) }
         end
 
         html_options = options.reverse_merge(:data => {})

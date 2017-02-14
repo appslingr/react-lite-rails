@@ -1,6 +1,6 @@
 require 'rails'
 
-module React
+module ReactLite
   module Rails
     class Railtie < ::Rails::Railtie
       config.react = ActiveSupport::OrderedOptions.new
@@ -23,26 +23,26 @@ module React
       # Include the react-rails view helper lazily
       initializer "react_rails.setup_view_helpers", after: :load_config_initializers, group: :all do |app|
 
-        app.config.react.jsx_transformer_class ||= React::JSX::DEFAULT_TRANSFORMER
-        React::JSX.transformer_class = app.config.react.jsx_transformer_class
-        React::JSX.transform_options = app.config.react.jsx_transform_options
+        app.config.react.jsx_transformer_class ||= ReactLite::JSX::DEFAULT_TRANSFORMER
+        ReactLite::JSX.transformer_class = app.config.react.jsx_transformer_class
+        ReactLite::JSX.transform_options = app.config.react.jsx_transform_options
 
-        app.config.react.view_helper_implementation ||= React::Rails::ComponentMount
-        React::Rails::ViewHelper.helper_implementation_class = app.config.react.view_helper_implementation
-        React::Rails::ComponentMount.camelize_props_switch = app.config.react.camelize_props
+        app.config.react.view_helper_implementation ||= ReactLite::Rails::ComponentMount
+        ReactLite::Rails::ViewHelper.helper_implementation_class = app.config.react.view_helper_implementation
+        ReactLite::Rails::ComponentMount.camelize_props_switch = app.config.react.camelize_props
 
         ActiveSupport.on_load(:action_controller) do
-          include ::React::Rails::ControllerLifecycle
+          include ::ReactLite::Rails::ControllerLifecycle
         end
 
         ActiveSupport.on_load(:action_view) do
-          include ::React::Rails::ViewHelper
+          include ::ReactLite::Rails::ViewHelper
         end
       end
 
       initializer "react_rails.add_component_renderer", group: :all do |app|
         ActionController::Renderers.add :component do |component_name, options|
-          renderer = ::React::Rails::ControllerRenderer.new(controller: self)
+          renderer = ::ReactLite::Rails::ControllerRenderer.new(controller: self)
           html = renderer.call(component_name, options)
           render_options = options.merge(inline: html)
           render(render_options)
@@ -50,7 +50,7 @@ module React
       end
 
       initializer "react_rails.bust_cache", after: :load_config_initializers, group: :all do |app|
-        asset_variant = React::Rails::AssetVariant.new({
+        asset_variant = ReactLite::Rails::AssetVariant.new({
           variant: app.config.react.variant,
           addons: app.config.react.addons,
         })
@@ -63,7 +63,7 @@ module React
       end
 
       initializer "react_rails.set_variant", after: :engines_blank_point, group: :all do |app|
-        asset_variant = React::Rails::AssetVariant.new({
+        asset_variant = ReactLite::Rails::AssetVariant.new({
           variant: app.config.react.variant,
           addons: app.config.react.addons,
         })
@@ -85,7 +85,7 @@ module React
         if app.config.react.sprockets_strategy == false
           # pass, Sprockets opt-out
         elsif sprockets_env.present?
-          React::JSX::SprocketsStrategy.attach_with_strategy(sprockets_env, app.config.react.sprockets_strategy)
+          ReactLite::JSX::SprocketsStrategy.attach_with_strategy(sprockets_env, app.config.react.sprockets_strategy)
         else
           # pass, Sprockets is not preset
         end

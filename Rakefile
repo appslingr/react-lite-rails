@@ -12,7 +12,7 @@ def copy_react_asset(webpack_file, destination_file)
   FileUtils.cp(full_webpack_path, full_destination_path)
 end
 
-namespace :react do
+namespace :react_lite do
   desc "Run the JS build process to put files in the gem source"
   task update: [:install, :build, :copy]
 

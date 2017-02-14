@@ -183,7 +183,7 @@ MyApp::Application.configure do
   # Settings for the pool of renderers:
   config.react.server_renderer_pool_size  ||= 1  # ExecJS doesn't allow more than one on MRI
   config.react.server_renderer_timeout    ||= 20 # seconds
-  config.react.server_renderer = React::ServerRendering::SprocketsRenderer
+  config.react.server_renderer = ReactLite::ServerRendering::SprocketsRenderer
   config.react.server_renderer_options = {
     files: ["react-server.js", "components.js"], # files to load for prerendering
     replay_console: true,                 # if true, console.* will be replayed client-side
@@ -356,7 +356,7 @@ You can extend some of the core functionality of `react-rails` by injecting new 
 - `#initialize(options={})`, which accepts the hash from `config.react.server_renderer_options`
 - `#render(component_name, props, prerender_options)` to return a string of HTML
 
-`react-rails` provides two renderer classes: `React::ServerRendering::ExecJSRenderer` and `React::ServerRendering::SprocketsRenderer`.
+`react-rails` provides two renderer classes: `ReactLite::ServerRendering::ExecJSRenderer` and `ReactLite::ServerRendering::SprocketsRenderer`.
 
 `ExecJSRenderer` offers two other points for extension:
 
@@ -373,7 +373,7 @@ Any subclass of `ExecJSRenderer` may use those hooks (for example, `SprocketsRen
 - `#setup(controller_instance)`, called when the helper is initialized at the start of the request
 - `#teardown(controller_instance)`, called at the end of the request
 
-`react-rails` provides one implementation, `React::Rails::ComponentMount`.
+`react-rails` provides one implementation, `ReactLite::Rails::ComponentMount`.
 
 ### Custom JSX Transformer
 
@@ -382,7 +382,7 @@ Any subclass of `ExecJSRenderer` may use those hooks (for example, `SprocketsRen
 - `#initialize(options)`, where options is the value passed to `config.react.jsx_transform_options`
 - `#transform(code_string)` to return a string of transformed code
 
-`react-rails` provides two transformers, `React::JSX::JSXTransformer` and `React::JSX::BabelTransformer`.
+`react-rails` provides two transformers, `ReactLite::JSX::JSXTransformer` and `ReactLite::JSX::BabelTransformer`.
 
 ### Related Projects
 

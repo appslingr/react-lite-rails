@@ -3,7 +3,7 @@ require 'generators/react/ujs_generator'
 
 class UjsGeneratorTest < Rails::Generators::TestCase
   destination File.join(Rails.root, 'tmp', 'ujs_generator')
-  tests React::Generators::UjsGenerator
+  tests ReactLite::Generators::UjsGenerator
   setup :prepare_destination
 
   test "it includes all event support by default" do

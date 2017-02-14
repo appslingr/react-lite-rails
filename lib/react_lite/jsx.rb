@@ -1,12 +1,11 @@
-require 'execjs'
-require 'react/jsx/processor'
-require 'react/jsx/template'
-require 'react/jsx/jsx_transformer'
-require 'react/jsx/babel_transformer'
-require 'react/jsx/sprockets_strategy'
+require 'react_lite/jsx/processor'
+require 'react_lite/jsx/template'
+require 'react_lite/jsx/jsx_transformer'
+require 'react_lite/jsx/babel_transformer'
+require 'react_lite/jsx/sprockets_strategy'
 require 'rails'
 
-module React
+module ReactLite
   module JSX
     DEFAULT_TRANSFORMER = BabelTransformer
     mattr_accessor :transform_options, :transformer_class, :transformer

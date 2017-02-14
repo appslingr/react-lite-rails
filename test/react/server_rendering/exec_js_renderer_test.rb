@@ -17,7 +17,7 @@ class ExecJSRendererTest < ActiveSupport::TestCase
     react_server_source = File.read(File.expand_path("../../../../lib/assets/react-source/production/react-server.js", __FILE__))
     todo_component_source = File.read(File.expand_path("../../../dummy/app/assets/javascripts/components/PlainJSTodo.js", __FILE__))
     code = react_server_source + todo_component_source
-    @renderer = React::ServerRendering::ExecJSRenderer.new(code: code)
+    @renderer = ReactLite::ServerRendering::ExecJSRenderer.new(code: code)
   end
 
   test '#render returns HTML' do
@@ -41,7 +41,7 @@ class ExecJSRendererTest < ActiveSupport::TestCase
       "var afterRenderVar = 'assigned_after_render'"
     end
 
-    error = assert_raises(React::ServerRendering::PrerenderError) do
+    error = assert_raises(ReactLite::ServerRendering::PrerenderError) do
       @renderer.render("Todo", {todo: "write tests"}.to_json, {})
     end
 
@@ -59,7 +59,7 @@ class ExecJSRendererTest < ActiveSupport::TestCase
       "throw 'after_render ' + beforeRenderVar"
     end
 
-    error = assert_raises(React::ServerRendering::PrerenderError) do
+    error = assert_raises(ReactLite::ServerRendering::PrerenderError) do
       @renderer.render("Todo", {todo: "write tests"}.to_json, {})
     end
 
@@ -68,7 +68,7 @@ class ExecJSRendererTest < ActiveSupport::TestCase
   end
 
   test '.new accepts code:' do
-    dummy_renderer = React::ServerRendering::ExecJSRenderer.new(code: DUMMY_IMPLEMENTATION)
+    dummy_renderer = ReactLite::ServerRendering::ExecJSRenderer.new(code: DUMMY_IMPLEMENTATION)
     result = dummy_renderer.render("Todo", {todo: "get a real job"}.to_json, {})
     assert_equal("renderToString was called", result)
   end

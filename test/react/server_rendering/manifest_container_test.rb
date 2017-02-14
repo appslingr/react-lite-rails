@@ -11,7 +11,7 @@ if defined?(Sprockets::Rails::VERSION) &&
     def setup
       precompile_assets
 
-      @manifest_container = React::ServerRendering::ManifestContainer.new
+      @manifest_container = ReactLite::ServerRendering::ManifestContainer.new
     end
 
     def teardown

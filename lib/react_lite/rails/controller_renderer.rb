@@ -1,9 +1,9 @@
-module React
+module ReactLite
   module Rails
     # A renderer class suitable for `ActionController::Renderers`.
     # It is associated to `:component` in the Railtie.
     #
-    # It is prerendered with {React::ServerRendering}.
+    # It is prerendered with {ReactLite::ServerRendering}.
     #
     # @example Rendering a component from a controller
     #   class TodosController < ApplicationController
@@ -13,7 +13,7 @@ module React
     #     end
     #   end
     class ControllerRenderer
-      include React::Rails::ViewHelper
+      include ReactLite::Rails::ViewHelper
       include ActionView::Helpers::TagHelper
       include ActionView::Helpers::TextHelper
 

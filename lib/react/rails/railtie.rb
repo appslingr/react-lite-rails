@@ -12,11 +12,6 @@ module React
       config.react.camelize_props = false # pass in an underscored hash but get a camelized hash
       config.react.sprockets_strategy = nil # how to attach JSX to the asset pipeline (or `false` for none)
 
-      # Server rendering:
-      config.react.server_renderer_pool_size  = 1   # increase if you're on JRuby
-      config.react.server_renderer_timeout    = 20  # seconds
-      config.react.server_renderer            = nil # defaults to SprocketsRenderer
-      config.react.server_renderer_options    = {}  # SprocketsRenderer provides defaults
       # View helper implementation:
       config.react.view_helper_implementation = nil # Defaults to ComponentMount
 
@@ -80,21 +75,7 @@ module React
       end
 
       config.after_initialize do |app|
-        # The class isn't accessible in the configure block, so assign it here if it wasn't overridden:
-        app.config.react.server_renderer ||= React::ServerRendering::SprocketsRenderer
 
-        React::ServerRendering.pool_size        = app.config.react.server_renderer_pool_size
-        React::ServerRendering.pool_timeout     = app.config.react.server_renderer_timeout
-        React::ServerRendering.renderer_options = app.config.react.server_renderer_options
-        React::ServerRendering.renderer         = app.config.react.server_renderer
-
-        React::ServerRendering.reset_pool
-        # Reload renderers in dev when files change
-        if Gem::Version.new(::Rails::VERSION::STRING) >= Gem::Version.new("5.x")
-          ActiveSupport::Reloader.to_prepare { React::ServerRendering.reset_pool }
-        else
-          ActionDispatch::Reloader.to_prepare { React::ServerRendering.reset_pool }
-        end
       end
 
       initializer "react_rails.setup_engine", :group => :all do |app|

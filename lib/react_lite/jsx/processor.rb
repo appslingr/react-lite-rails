@@ -1,4 +1,4 @@
-module React
+module ReactLite
   module JSX
     # A Sprockets 3+-compliant processor
     class Processor

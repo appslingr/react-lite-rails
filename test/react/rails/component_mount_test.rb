@@ -3,7 +3,7 @@ require 'test_helper'
 when_sprockets_available do
   class ComponentMountTest < ActionDispatch::IntegrationTest
     setup do
-      @helper = React::Rails::ComponentMount.new
+      @helper = ReactLite::Rails::ComponentMount.new
     end
 
     test '#react_component accepts React props' do
@@ -15,8 +15,8 @@ when_sprockets_available do
     end
 
     test '#react_component accepts React props with camelize_props' do
-      React::Rails::ComponentMount.camelize_props_switch = true
-      helper = React::Rails::ComponentMount.new
+      ReactLite::Rails::ComponentMount.camelize_props_switch = true
+      helper = ReactLite::Rails::ComponentMount.new
       html = helper.react_component('Foo', {foo_bar: 'value'})
       expected_props = %w(data-react-class="Foo" data-react-props="{&quot;fooBar&quot;:&quot;value&quot;}")
       expected_props.each do |segment|
@@ -25,16 +25,16 @@ when_sprockets_available do
     end
 
     test '#react_component allows camelize_props to be passed in as an option' do
-      React::Rails::ComponentMount.camelize_props_switch = false
-      helper = React::Rails::ComponentMount.new
+      ReactLite::Rails::ComponentMount.camelize_props_switch = false
+      helper = ReactLite::Rails::ComponentMount.new
       html = helper.react_component('Foo', {foo_bar: 'value'}, camelize_props: true)
       expected_props = %w(data-react-class="Foo" data-react-props="{&quot;fooBar&quot;:&quot;value&quot;}")
       expected_props.each do |segment|
         assert html.include?(segment)
       end
 
-      React::Rails::ComponentMount.camelize_props_switch = true
-      helper = React::Rails::ComponentMount.new
+      ReactLite::Rails::ComponentMount.camelize_props_switch = true
+      helper = ReactLite::Rails::ComponentMount.new
       html = helper.react_component('Foo', {foo_bar: 'value'}, camelize_props: false)
       expected_props = %w(data-react-class="Foo" data-react-props="{&quot;foo_bar&quot;:&quot;value&quot;}")
       expected_props.each do |segment|
@@ -43,8 +43,8 @@ when_sprockets_available do
     end
 
     test '#react_component accepts React props with camelize_props containing nested arrays' do
-      React::Rails::ComponentMount.camelize_props_switch = true
-      helper = React::Rails::ComponentMount.new
+      ReactLite::Rails::ComponentMount.camelize_props_switch = true
+      helper = ReactLite::Rails::ComponentMount.new
       html = helper.react_component('Foo', {foo_bar: [{user_name: 'Ryan'}, {user_name: 'Matt'}], bar_foo: 1})
       expected_props = %w(data-react-class="Foo" data-react-props="{&quot;fooBar&quot;:[{&quot;userName&quot;:&quot;Ryan&quot;},{&quot;userName&quot;:&quot;Matt&quot;}],&quot;barFoo&quot;:1}")
       expected_props.each do |segment|

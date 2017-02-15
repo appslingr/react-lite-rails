@@ -5,7 +5,7 @@ if Rails::VERSION::MAJOR == 3
     def setup
       precompile_assets
 
-      @manifest_container = React::ServerRendering::YamlManifestContainer.new
+      @manifest_container = ReactLite::ServerRendering::YamlManifestContainer.new
     end
 
     def teardown

@@ -3,7 +3,7 @@ require 'generators/react/install_generator'
 
 class InstallGeneratorTest < Rails::Generators::TestCase
   destination File.join(Rails.root, 'tmp', 'generator_test_output')
-  tests React::Generators::InstallGenerator
+  tests ReactLite::Generators::InstallGenerator
   setup :prepare_destination
 
   def copy_directory(dir)

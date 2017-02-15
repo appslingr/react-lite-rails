@@ -1,5 +1,5 @@
 # Override setting set in application.rb
-class CustomComponentMount < React::Rails::ComponentMount
+class CustomComponentMount < ReactLite::Rails::ComponentMount
 end
 
 Dummy::Application.configure do

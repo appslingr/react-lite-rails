@@ -26,9 +26,9 @@ end
 
 def reset_transformer
   clear_sprockets_cache
-  React::JSX.transformer_class = React::JSX::DEFAULT_TRANSFORMER
-  React::JSX.transform_options = {}
-  React::JSX.transformer = nil
+  ReactLite::JSX.transformer_class = ReactLite::JSX::DEFAULT_TRANSFORMER
+  ReactLite::JSX.transform_options = {}
+  ReactLite::JSX.transformer = nil
 end
 
 # Sprockets 2 doesn't expire this assets well in

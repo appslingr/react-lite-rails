@@ -1,4 +1,4 @@
-module React
+module ReactLite
   module Rails
     module ViewHelper
       # This class will be used for inserting tags into HTML.
@@ -6,7 +6,7 @@ module React
       #   - #setup(controller_instance)
       #   - #teardown(controller_instance)
       #   - #react_component(name, props, options &block)
-      # The default is {React::Rails::ComponentMount}
+      # The default is {ReactLite::Rails::ComponentMount}
       mattr_accessor :helper_implementation_class
 
       # Render a React component into the view

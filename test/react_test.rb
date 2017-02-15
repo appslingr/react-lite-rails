@@ -26,6 +26,6 @@ class ReactTest < ActiveSupport::TestCase
       "alreadyCamelized" => :ok
     }
 
-    assert_equal expected_props, React.camelize_props(raw_props)
+    assert_equal expected_props, ReactLite.camelize_props(raw_props)
   end
 end

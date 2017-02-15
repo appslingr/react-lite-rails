@@ -1,0 +1,7 @@
+require 'react_lite/rails/asset_variant'
+require 'react_lite/rails/railtie'
+require 'react_lite/rails/controller_lifecycle'
+require 'react_lite/rails/version'
+require 'react_lite/rails/component_mount'
+require 'react_lite/rails/view_helper'
+require 'react_lite/rails/controller_renderer'

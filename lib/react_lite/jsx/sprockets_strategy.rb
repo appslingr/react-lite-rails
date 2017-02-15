@@ -1,4 +1,4 @@
-module React
+module ReactLite
   module JSX
     # Depending on the Sprockets version,
     # attach JSX transformation the the Sprockets environment.
@@ -33,17 +33,17 @@ module React
       end
 
       def register_engine(sprockets_env)
-        sprockets_env.register_engine(".jsx", React::JSX::Template)
+        sprockets_env.register_engine(".jsx", ReactLite::JSX::Template)
       end
 
       def register_engine_with_mime_type(sprockets_env)
-        sprockets_env.register_engine(".jsx", React::JSX::Processor, mime_type: "application/javascript", silence_deprecation: true)
+        sprockets_env.register_engine(".jsx", ReactLite::JSX::Processor, mime_type: "application/javascript", silence_deprecation: true)
       end
 
       def register_processors(sprockets_env)
         sprockets_env.register_mime_type("application/jsx", extensions: [".jsx", ".js.jsx", ".es.jsx", ".es6.jsx"])
         sprockets_env.register_mime_type("application/jsx+coffee", extensions: [".jsx.coffee", ".js.jsx.coffee"])
-        sprockets_env.register_transformer("application/jsx", "application/javascript", React::JSX::Processor)
+        sprockets_env.register_transformer("application/jsx", "application/javascript", ReactLite::JSX::Processor)
         sprockets_env.register_transformer("application/jsx+coffee", "application/jsx", Sprockets::CoffeeScriptProcessor)
         sprockets_env.register_preprocessor("application/jsx", Sprockets::DirectiveProcessor.new(comments: ["//", ["/*", "*/"]]))
         sprockets_env.register_preprocessor("application/jsx+coffee", Sprockets::DirectiveProcessor.new(comments: ["#", ["###", "###"]]))

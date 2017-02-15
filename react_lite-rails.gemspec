@@ -1,14 +1,14 @@
 # encoding: utf-8
 
 $:.push File.expand_path('../lib', __FILE__)
-require 'react/rails/version'
+require 'react_lite/rails/version'
 
 Gem::Specification.new do |s|
-  s.name = 'react-rails'
-  s.version = React::Rails::VERSION
+  s.name = 'react_lite-rails'
+  s.version = ReactLite::Rails::VERSION
   s.summary = 'React/JSX adapter for the Ruby on Rails asset pipeline.'
   s.description = 'Compile your JSX on demand or precompile for production.'
-  s.homepage = 'https://github.com/reactjs/react-rails'
+  s.homepage = 'https://github.com/appslingr/react-lite-rails'
   s.license = 'Apache-2.0'
 
   s.author = ['Adam Bodnar']

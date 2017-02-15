@@ -24,12 +24,12 @@ end
 
 class ControllerLifecycleTest < ActionDispatch::IntegrationTest
   def setup
-    @previous_helper_implementation = React::Rails::ViewHelper.helper_implementation_class
-    React::Rails::ViewHelper.helper_implementation_class = DummyHelperImplementation
+    @previous_helper_implementation = ReactLite::Rails::ViewHelper.helper_implementation_class
+    ReactLite::Rails::ViewHelper.helper_implementation_class = DummyHelperImplementation
   end
 
   def teardown
-    React::Rails::ViewHelper.helper_implementation_class = @previous_helper_implementation
+    ReactLite::Rails::ViewHelper.helper_implementation_class = @previous_helper_implementation
   end
 
   test "it creates a helper object and puts it in the request env" do

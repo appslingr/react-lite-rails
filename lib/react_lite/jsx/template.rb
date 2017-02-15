@@ -1,6 +1,6 @@
 require 'tilt'
 
-module React
+module ReactLite
   module JSX
     # Sprockets 2-compliant processor
     class Template < Tilt::Template

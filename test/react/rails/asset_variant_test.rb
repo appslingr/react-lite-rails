@@ -2,7 +2,7 @@ require 'test_helper'
 
 class AssetVariantTest < ActiveSupport::TestCase
   def build_variant(options)
-    React::Rails::AssetVariant.new(options)
+    ReactLite::Rails::AssetVariant.new(options)
   end
 
   test 'it points to different directories for react' do

@@ -4,7 +4,7 @@ require "test_helper"
 class ViewHelperHelper
   extend ActionView::Context
   extend ActionView::Helpers::CaptureHelper
-  extend React::Rails::ViewHelper
+  extend ReactLite::Rails::ViewHelper
 
 end
 
@@ -42,8 +42,8 @@ HTML
 
   test "view helper uses the implementation class set in the initializer" do
     assert_equal(
-      React::Rails::ViewHelper.helper_implementation_class.to_s,
-      "CustomComponentMount"
+        ReactLite::Rails::ViewHelper.helper_implementation_class.to_s,
+        "CustomComponentMount"
     )
   end
 end

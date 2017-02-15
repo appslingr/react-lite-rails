@@ -1,4 +1,4 @@
-module React
+module ReactLite
   module Rails
     module ControllerLifecycle
       extend ActiveSupport::Concern
@@ -13,7 +13,7 @@ module React
       end
 
       def setup_react_component_helper
-        new_helper = React::Rails::ViewHelper.helper_implementation_class.new
+        new_helper = ReactLite::Rails::ViewHelper.helper_implementation_class.new
         new_helper.setup(self)
         @__react_component_helper = new_helper
       end

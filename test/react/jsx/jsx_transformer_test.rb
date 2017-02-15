@@ -4,7 +4,7 @@ when_sprockets_available do
   class JSXTransformerTest < ActionDispatch::IntegrationTest
     setup do
       reset_transformer
-      React::JSX.transformer_class = React::JSX::JSXTransformer
+      ReactLite::JSX.transformer_class = ReactLite::JSX::JSXTransformer
       manually_expire_asset('JSXTransformer.js')
     end
 
@@ -28,7 +28,7 @@ when_sprockets_available do
     end
 
     test 'accepts harmony: true option' do
-      React::JSX.transform_options = {harmony: true}
+      ReactLite::JSX.transform_options = {harmony: true}
       get '/assets/harmony_example.js'
       assert_response :success
       assert_match(/generateGreeting:\s*function\(\)/, @response.body, "object literal methods")
@@ -38,7 +38,7 @@ when_sprockets_available do
     end
 
     test 'accepts strip_types: true option' do
-      React::JSX.transform_options = {strip_types: true, harmony: true}
+      ReactLite::JSX.transform_options = {strip_types: true, harmony: true}
       get '/assets/flow_types_example.js'
       assert_response :success
       assert_match(/\(i\s*,\s*name\s*\)\s*\{/, @response.body, "type annotations are removed")
@@ -49,7 +49,7 @@ when_sprockets_available do
       custom_path =     Rails.root.join("vendor/assets/react/custom")
       replacing_path =  custom_path.join("CustomTransformer.js")
 
-      React::JSX.transform_options = {asset_path: "custom/CustomTransformer.js"}
+      ReactLite::JSX.transform_options = {asset_path: "custom/CustomTransformer.js"}
 
       FileUtils.mkdir_p(custom_path)
       FileUtils.cp(hidden_path, replacing_path)

@@ -1,4 +1,4 @@
-module React
+module ReactLite
   module Generators
     class UjsGenerator < ::Rails::Generators::Base
       desc "Create a custom copy of react_ujs for your application"

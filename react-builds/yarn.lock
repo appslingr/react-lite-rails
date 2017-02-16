@@ -1016,9 +1016,9 @@ rc@~1.1.6:
     minimist "^1.2.0"
     strip-json-comments "~1.0.4"
 
-react-lite@^0.15.31:
-  version "0.15.31"
-  resolved "https://registry.yarnpkg.com/react-lite/-/react-lite-0.15.31.tgz#6209e1a37cf91732ee677055f8f7d63bfb0efbbc"
+react-lite@^0.15.32:
+  version "0.15.32"
+  resolved "https://registry.yarnpkg.com/react-lite/-/react-lite-0.15.32.tgz#a8110030e283453818f26bbff6839a6347c7a375"
 
 readable-stream@^1.0.27-1, readable-stream@^1.1.13:
   version "1.1.14"

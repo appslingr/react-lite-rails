@@ -1,4 +1,6 @@
 var addons = {};
-addons.update = require("immutability-helper");
+
+//add React add-ons to the package.json
+addons.iassign = require("immutable-assign");
 
 module.exports = addons;

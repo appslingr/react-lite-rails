@@ -5,7 +5,7 @@
   "main": "react.js",
   "dependencies": {
     "react-lite": "^0.15.32",
-    "immutability-helper": "^2.1.1",
+    "immutable-assign": "^1.0.29",
     "webpack": "^1.12.2"
   },
   "scripts": {

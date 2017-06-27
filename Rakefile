@@ -38,7 +38,7 @@ namespace :react_lite do
   desc "Install the JavaScript dependencies"
   task :install do
     Dir.chdir("react-builds") do
-      `yarn install`
+      `yarn install --ignore-optional`
     end
   end
 end

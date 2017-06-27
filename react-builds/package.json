@@ -4,7 +4,7 @@
   "description": "Prepares react-rails asset files",
   "main": "react.js",
   "dependencies": {
-    "react-lite": "^0.15.32",
+    "react-lite": "0.15.37",
     "immutable-assign": "^1.0.29",
     "webpack": "^1.12.2"
   },
